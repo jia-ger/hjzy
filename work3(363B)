@@ -1,0 +1,43 @@
+波利卡普家门前有一道栅栏。栅栏由 n 块宽度相同的木板组成，从左到右依次排列。第 i 块木板的高度是 hi 米，不同的木板可以有不同的高度。
+Polycarpus 买了一架豪华钢琴，正在考虑如何把它搬进家里。为了实现他的计划，他需要从栅栏上准确地取下连续的 k 块木板。
+越高的木板越难从栅栏上拆下来，所以波利卡普斯想找到这样的 k 块连续木板，使它们的高度之和尽可能小。
+请编写一个程序，找出总高度最小的 k 块连续木板的索引。注意，栅栏不是围绕着波利卡普斯的家，而是在他家前面(换句话说，栅栏不是循环的)
+输入
+输入的第一行包含整数 n 和 k ( 1 ≤ n ≤ 1.5·105, 1 ≤ k ≤ n )。( 1 ≤ n ≤ 1.5·105, 1 ≤ k ≤ n )--栅栏的木板数和钢琴孔的宽度。
+第二行包含整数序列 h1, h2, ..., hn ( 1 ≤ hi ≤ 100 )，其中 hi 是栅栏上第 i 块木板的高度。
+输出
+打印这样的整数 j ，即木板 j ， j + 1 ，...， j + k - 1 的高度之和是可能的最小值。如果存在多个这样的 j ，则打印其中任意一个。
+
+//前缀和，本来想开两个数组，后来想到一个数组前缀和占用空间更小
+
+题解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+#define PII pair<int,int>
+
+const int N=2e5;
+itn h[N];
+
+signed main()
+{  
+  int n,k;cin>>n>>k;
+  for(int i=1;i<=n;i++)
+  {
+  cin>>h[i];h[i]=h[i]+h[i-1];
+  }
+  itn ans=INT_MAX;
+  int xia=0;
+  for(itn i=1;i<=n-k+1;i++)
+  { if(h[i+k-1]-h[i-1]<ans)
+  	{
+	  ans=h[i+k-1]-h[i-1];
+	  xia=i;  
+    }
+  	
+  }
+  cout<<xia;
+  return 0;
+}
