@@ -1,0 +1,50 @@
+这种饮料可以在市内不同的商店 n 买到。众所周知，在 i 店里一瓶的价格等于 xi 枚硬币。
+瓦西里计划连续 q 天购买他最喜欢的饮料。他知道，在第 i 天，他可以花掉 mi 个硬币。现在，他想知道每一天他可以在多少家不同的商店买到一瓶"Beecola"。
+输入
+输入的第一行包含一个整数 n ( 1 ≤ n ≤ 100 000 ) --城市中出售瓦西里最喜欢的饮料的商店数量。
+第二行包含 n 个整数 xi ( 1 ≤ xi ≤ 100 000 ) --第 i 家商店中饮料的价格。
+第三行包含一个整数 q 。( 1 ≤ q ≤ 100 000 ) - 瓦西里计划购买饮料的天数。
+接着是 q 行，每行包含一个整数 mi ( 1 ≤ mi ≤ 109 ) - 瓦西里在第 i 天可以花费的硬币数。
+//双重循环写可能会超时,所以二分
+题解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+#define PII pair<int,int>
+
+const int N=1e5+10;
+itn x[N];
+int n;
+int check(int na)
+{
+	int l=1,r=n;
+	if(na<x[1])return 0;
+	while(l<r)
+	{   int mid=(l+r+1)/2;
+		if(x[mid]<=na)l=mid;
+		else r=mid-1;
+		
+	}
+	
+	return l;
+}
+signed main()
+{  
+  
+  cin>>n;
+  for(int i=1;i<=n;i++)
+  cin>>x[i];
+  sort(x+1,x+n+1);
+ 
+  itn q;
+  cin>>q;
+  for(itn i=1;i<=q;i++)
+  {
+  	int m;cin>>m;
+  	cout<<check(m)<<endl;
+  	 	
+  }
+  return 0;
+}
