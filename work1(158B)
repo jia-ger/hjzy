@@ -1,0 +1,57 @@
+下课后， n 组小学生来到室外，决定去波利卡普斯庆祝他的生日。我们知道， 第i组由 si 个朋友( 1 ≤ si ≤ 4 )组成，他们想一起去波利卡普斯。他们决定乘坐出租车前往。
+每辆车最多可以载四名乘客。如果每个小组的所有成员都乘坐同一辆出租车(但一辆出租车可以乘坐多个小组)，那么孩子们至少需要多少辆车？
+//思路：优先凑够四人满车的情况
+//易错点：容易按双指针想
+
+题解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+#define PII pair<int,int>
+
+itn a[5];
+signed main()
+{  
+  itn n;
+  cin>>n;
+  
+  for(itn i=1;i<=n;i++)
+  { int x;icn>>x;
+    a[x]++;
+  }
+ 
+  int ans=a[4];
+  
+  if(a[3]){
+  	while(a[3]&&a[1]){
+  		ans++;a[3]--;a[1]--;
+	  }
+  	if(a[3])ans+=a[3];
+  	
+  }
+  if(a[2]){
+  	int c=a[2]/2;
+  	ans+=c;
+  	a[2]=a[2]-c*2;
+  	
+  	if(a[2])
+  	  {
+		ans++;
+		a[1]=a[1]-2;	 
+	  }
+  }
+ 
+  if(a[1]>0)
+  { 
+   	int c=a[1]/4;
+   	ans+=c;
+   	
+   	a[1]-=4*c;
+   	if(a[1])ans++;
+  	
+  }
+  cout<<ans;  
+  return 0;
+}
