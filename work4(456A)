@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+#define PII pair<int,int>
+
+const int N=2e5;
+struct abd
+{
+	itn a,b;
+	
+}x[N];
+bool cmp1(abd q,abd p)
+{
+	return q.a<p.a;
+}
+signed main()
+{  
+  int n;
+  icn>>n;
+  for(itn i=1;i<=n;i++)
+  {
+  	cin>>x[i].a>>x[i].b;
+  }
+  
+  sort(x+1,x+n+1,cmp1);
+  int c=x[1].b;
+  for(itn i=2;i<=n;i++)
+  {
+  	if(c>x[i].b){
+  		cout<<"Happy Alex";return 0;
+	  }
+	else c=x[i].b;
+  }
+  cout<<"Poor Alex";
+  return 0;
+}
