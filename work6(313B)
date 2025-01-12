@@ -1,0 +1,29 @@
+//静态区间查询考虑前缀和，暴力枚举可能超时
+题解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=1e5+10;
+int f[N];
+signed main() 
+{ string s;
+  cin>>s;
+  for(itn i=0;i<s.length();i++)
+  {
+  	bool q=(s[i]==s[i+1]);
+  	f[i+1]=f[i]+q;
+  	
+  }
+  int m;cin>>m;
+  while(m--)
+  {
+  	itn l,r;cin>>l>>r;
+  	cout<<f[r-1]-f[l-1]<<endl;
+  	
+  }
+  
+    return 0;
+}
