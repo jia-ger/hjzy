@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=5e5+10;
+itn check(double a)
+{
+	double n=360.0/(180.0-a);
+	 if(n >= 3 && n == (itn)n)return 1;
+	 else return 0;
+}
+signed main() 
+{  itn t;
+   cin>>t;
+   while(t--)
+   {
+   	double a;
+   	cin>>a;
+   	if(check(a))cout<<"YES"<<endl;
+   	else cout<<"NO"<<endl;   	
+   }
+  
+    return 0;
+}
