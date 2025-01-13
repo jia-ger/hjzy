@@ -1,0 +1,48 @@
+//用矢量
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=1e5+10;
+vector<int>q1,q2,q3;
+signed main() 
+{   itn n;cin>>n;
+    for(itn i=1;i<=n;i++)
+	{
+	  itn a;cin>>a;
+	  q1.push_back(a);
+	
+	}
+	for(itn i=1;i<=n-1;i++)
+	{
+	  itn a;cin>>a;
+	  q2.push_back(a);
+	
+	}
+	for(itn i=1;i<=n-2;i++)
+	{
+	  itn a;cin>>a;
+	  q3.push_back(a);
+	
+	} 
+	sort(q1.begin(),q1.end());
+	sort(q2.begin(),q2.end());
+	sort(q3.begin(),q3.end());
+	for(itn i=0;i<q1.size();i++)
+	{
+		if(q1[i]!=q2[i])
+		{
+			cout<<q1[i]<<endl;break; 
+		}
+	} 	
+	for(itn i=0;i<q2.size();i++)
+	{
+		if(q2[i]!=q3[i])
+		{
+			cout<<q2[i];return 0;
+		}
+	} 
+    return 0;
+}
