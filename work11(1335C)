@@ -1,0 +1,38 @@
+题解//wa了一发，多次循环要清空数组！！！不然后面sort那里直接乱套
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+itn a[N];
+void slove()
+{   memset(a,0,sizeof a);
+	itn n;icn>>n;
+	for(itn i=1;i<=n;i++)
+	cin>>a[i];
+	if(n==1)cout<<0<<endl;
+	else if(n==2)cout<<1<<endl;
+	else 
+	{ itn x=0,y=0,p=1;
+	  sort(a+1,a+n+1);
+	  for(int i=1;i<=n;i++)
+	  {
+	  	if(a[i]!=a[i-1])x++;
+	  	
+	  	if(a[i]==a[i+1])p++;
+	  	else p=1;
+	  	y=max(y,p); 	
+	  }
+	  if(x>y)cout<<y<<endl;
+	  else if(x==y)cout<<x-1<<endl;
+	  else cout<<x<<endl;	
+	}
+}
+signed main() 
+{   itn t;
+    cin>>t;
+    while(t--)slove();
+    return 0;
+}
