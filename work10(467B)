@@ -1,0 +1,38 @@
+//暴力比较每个数和最后一个数二进制有几位不同
+题解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=1e5+10;
+
+itn x[1005];
+signed main() 
+{   itn n,m,k;
+    cin>>n>>m>>k;
+    itn ans=0;
+    
+    for(itn i=1;i<=m+1;i++)
+    {
+    	cin>>x[i];
+    	
+	}
+	
+	for(itn i=1;i<=m;i++)
+    { itn maxx=0;
+      itn c=x[m+1];
+      while(x[i]!=0||c!=0)
+       {
+       	 if(c%2!=x[i]%2)maxx++;
+       	 if(maxx>k)break;
+       	 c/=2;
+		 x[i]/=2; 
+	   }
+      if(maxx<=k)ans++;
+	  	
+	}
+	cout<<ans;
+    return 0;
+}
