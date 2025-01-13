@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=1e5+10;
+
+void slove()
+{
+	itn n,k;cin>>n>>k;
+	if(n%2==k%2&&n>=k*k)cout<<"YES"<<endl;
+	else cout<<"NO"<<endl;
+	
+	
+	
+}
+signed main() 
+{   itn t;
+    cin>>t;
+    while(t--)
+    slove();
+    return 0;
+}
