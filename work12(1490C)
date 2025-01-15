@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+
+void slove()
+{	
+	bool flg = 0;
+		int n;
+		cin >> n;
+		for (int i = 1; i * i * i <= n; i++)
+		{
+			int j = n - i * i * i;
+			int k = (int)(cbrt(j));
+			if (i * i * i + j == n && k * k * k == j && j > 0)
+			{
+				cout << "YES"<<endl;
+				flg = 1;
+				break;
+			}
+		}
+		if (!flg) cout << "NO"<<endl; 
+	
+	
+	
+}
+signed main() 
+{   int t;
+    cin>>t;
+    while(t--)slove();
+    
+    return 0;
+}
