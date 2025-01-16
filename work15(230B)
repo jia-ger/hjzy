@@ -1,0 +1,37 @@
+//这道题需要自己思考一下，开根必须是质数，如果硬算几个因数会超时
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=1e5+10;
+itn pd(itn n)
+{
+	if(n<2)return 0;
+	for(itn i=2;i<=(itn)sqrt(n);i++)
+	if(n%i==0)return 0; 
+	
+	return 1;
+}
+void _(int n)
+{
+   if(sqrt(n)!=(int)sqrt(n))cout<<"NO"<<endl;
+	else
+      {
+      	if(pd(sqrt(n)))cout<<"YES"<<endl;
+      	else cout<<"NO"<<endl;
+	  }
+}
+signed main() 
+{   itn n;
+    cin>>n;
+    for(itn i=1;i<=n;i++)
+    {
+     int a;
+     cin>>a;
+	 _(a);
+    }
+    
+    return 0;
+}
