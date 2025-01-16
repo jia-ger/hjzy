@@ -1,0 +1,24 @@
+//就是考map，不用哈希
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+
+map<string,int>ma; 
+
+signed main() 
+{   itn n;
+    cin>>n;
+    for(itn i=1;i<=n;i++)
+    {      
+    	string s;cin>>s;	           	
+    	if(ma[s]==0)cout<<"OK"<<endl;
+    	else cout<<s<<ma[s]<<endl; 	
+    	ma[s]++;
+    	
+	}
+    return 0;
+}
