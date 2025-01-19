@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+
+signed main() 
+{   itn n,m;cin>>n>>m;
+    itn maxx,minn;
+    int c=n-(m-1);
+    maxx=c*(c-1)/2;
+    c=n/m;
+    int k=n%m;//均分后多出来几，就让均分结果 均摊多出来的数 
+    int cc=ceil(n*1.0/m);
+    minn=k*(cc*(cc-1)/2)+(m-k)*c*(c-1)/2;
+	
+	cout<<minn<<" "<<maxx;
+    return 0;
+}
