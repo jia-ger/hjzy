@@ -1,0 +1,23 @@
+//考虑最大和最小是同一个数
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+itn a[N];
+signed main() 
+{   itn n;cin>>n;
+    for(itn i=1;i<=n;i++)
+    cin>>a[i];
+    
+    sort(a+1,a+n+1);
+    cout<<a[n]-a[1]<<" ";
+    int x=1,y=n,yy=1;
+    while(a[x]==a[x+1])x++;
+    while(a[y]==a[y-1])y--,yy++;
+    if(a[1]==a[n])cout<<n*(n-1)/2; 
+    else cout<<x*yy;
+    return 0;
+}
