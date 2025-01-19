@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+void slove()
+{
+	 itn n,k,ans=0x7fffffff;cin>>n>>k;//这样找比遍历k更快
+	 for ( int i = 1; i * i <= n; i ++) {//n的最大因数为sqrt(n)
+			if (n % i == 0){//两种情况
+				if (i <= k)
+					ans = min (ans, n/i);
+				if (n/i <= k)
+					ans = min (ans, i);
+			}
+		}
+		cout<<ans<<endl;
+	
+}
+signed main() 
+{  itn t;cin>>t;
+   while(t--)slove();
+   
+    return 0;
+}
