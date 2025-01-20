@@ -1,0 +1,35 @@
+//二分一定要注意特判
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const itn N=2e5+10;
+itn a[N],b[N]; 
+signed main() 
+{   int n,m;cin>>n>>m;
+    for(itn i=1;i<=n;i++)
+    cin>>a[i];
+    for(itn i=1;i<=m;i++)
+    cin>>b[i]; 
+    
+    sort(a+1,a+n+1);
+     
+    for(itn i=1;i<=m;i++)
+    {
+    	itn l=1,r=n;
+    	while(l<r)
+    	{
+    		int mid=l+r+1>>1;
+    		if(a[mid]<=b[i])l=mid;
+    		else r=mid-1;
+    		
+		}
+		if(a[1]>b[i])l=0;
+    	cout<<l<<" ";
+ 	
+    	
+	}
+    return 0;
+}
