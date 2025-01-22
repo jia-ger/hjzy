@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int sum=0,c[30];//定义c计数，sum用来累加
+string a,ans="Second";//定义输入的字符串s和答案ans（默认后手胜（其实默认先手胜也行））
+int main(){
+    cin>>a;
+    for(int i=0;i<a.length();i++)c[a[i]-'a'+1]++;//记录字符串第i项出现的次数
+    for(int i=1;i<=26;i++)if(c[i]%2==1)sum++;//当第i个字符出现次数为奇数时，累加器++
+    if(sum==0||sum%2==1)ans="First";//判断要么全是偶数个删的只剩一个，要么第一个人先手
+    cout<<ans;
+    return 0;
+}
