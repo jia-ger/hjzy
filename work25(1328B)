@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+//const itn N=2e5+10;
+//itn a[N],b[N]; 
+void _()
+{  itn n,k;icn>>n>>k;
+   for(itn i=2;i<=n;i++)
+   {
+   	 if(k-(i-1)>0)k=k-(i-1);
+   	 else 
+   	 {
+   	 	itn r=n-k+1;
+   	 	int l=n-i+1;
+   	 	for(itn j=1;j<=n;j++)
+   	 	{ if(j==r||j==l)cout<<'b';
+   	 	  else cout<<'a';	
+		}
+		cout<<endl;
+   	 	break;
+   	 	
+	 }
+   	
+   }
+	
+}
+signed main() 
+{   itn t;
+    cin>>t;
+	while(t--)_(); 
+    return 0;
+}
