@@ -1,0 +1,26 @@
+//数独本来是，每一行每一列每一宫每个数字仅出现一次，所以只需替换1~9中任意一个数字就可以实现每一行每一列每一宫出现两次这个数
+#include<iostream>
+#include<cmath>
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+int main(){
+	int t;
+	cin>>t;
+	for(int x=1;x<=t;x++){
+		char c[9][9];
+		for(int i=0;i<9;i++){
+			for(int j=0;j<9;j++){
+				cin>>c[i][j];
+				if(c[i][j]=='1')c[i][j]++;
+			}
+		}
+		for(int i=0;i<9;i++){
+			for(int j=0;j<9;j++){
+				cout<<c[i][j];
+			}
+			cout<<endl;
+		}
+	}
+	return 0;
+}
