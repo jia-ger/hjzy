@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+itn x,y,n;
+const long long MOD=1000000007 ;
+itn f(itn n)
+{
+	if(n%6==1)return x;
+	if(n%6==2)return y;
+	if(n%6==3)return y-x;
+	if(n%6==4)return -x;
+	if(n%6==5)return -y;
+	if(n%6==0)return x-y;
+}
+signed main() 
+{  cin>>x>>y>>n;
+   itn ans= (f(n)%MOD+MOD)%MOD;
+   cout<<ans;
+    return 0;
+}
