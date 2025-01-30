@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=1e5+10;
+
+itn c[N],f[N];
+itn find(itn n)
+{
+	if(f[n]!=n)f[n]=find(f[n]);
+	return f[n];
+}
+signed main() 
+{  
+    itn n,m;cin>>n>>m;
+    for(itn i=1;i<=n;i++)
+    f[i]=i;
+    for(itn i=1;i<=n;i++)
+    cin>>c[i];
+    for(itn i=1;i<=m;i++)
+    {
+    	itn x,y;
+    	cin>>x>>y;
+    	if(c[find(x)]>c[find(y)])
+    	f[find(x)]=find(y);
+    	else 
+    	f[find(y)]=find(x);
+	}
+	int ans=0;
+	for(itn i=1;i<=n;i++)
+	if(find(i)==i)ans+=c[i];
+	cout<<ans;
+    return 0;
+}
