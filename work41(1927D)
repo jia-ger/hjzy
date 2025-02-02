@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+
+
+signed main() 
+{
+     itn t;cin>>t;
+     while(t--)
+     {
+     	itn n;icn>>n;
+     	itn a[n+5],b[n+5];
+     	for(itn i=1;i<=n;i++)
+        cin>>a[i]; 
+        b[0]=-1;
+		for(itn i=1;i<=n;i++)
+		b[i]=b[i-1]+(a[i]!=a[i-1]);    	
+     	itn q;cin>>q;
+     	while(q--)
+     	{
+     		itn l,r;cin>>l>>r;
+     		if(b[r]-b[l]==0)cout<<"-1 -1"<<endl;
+     		else cout<<l<<" "<<upper_bound(b+l+1,b+r+1,b[l])-b<<endl;
+		 }
+	 }
+    return 0;
+}
