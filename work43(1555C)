@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=1e5+10;
+
+itn a[N],b[N];
+
+signed main() 
+{
+    itn t;cin>>t;
+    while(t--)
+    {   itn sum1=0,sum2=0;
+    	itn m;icn>>m;
+    	for(itn i=1;i<=m;i++)
+    	cin>>a[i],sum1+=a[i];
+    	itn ans=INT_MAX;
+    	for(itn i=1;i<=m;i++)
+    	{
+    		cin>>b[i];
+    		sum1-=a[i];
+    		itn maxx=max(sum1,sum2);
+    		ans=min(maxx,ans);
+    		sum2+=b[i];
+		}
+		cout<<ans<<endl;
+	}
+    return 0;
+}
