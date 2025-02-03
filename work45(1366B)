@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+signed main() 
+{  itn z,y;
+   itn t;cin>>t;
+   while(t--)
+   {
+   	itn n,x,m;cin>>n>>x>>m;
+   	z=y=x;
+   	for(itn i=1;i<=m;i++)
+   	{
+   		int l,r;cin>>l>>r;
+   		if( z<=r&&y>=l) 
+   		z=min(z,l),y=max(y,r);
+   		
+	   }
+	   
+   	 cout<<y-z+1<<endl;
+   }
+	  
+   
+    return 0;
+}
