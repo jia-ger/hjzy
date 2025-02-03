@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+int t,n,k,k1,k2,h,a[200005],ans;
+signed main() {
+	cin>>t;
+	while(t--){
+		cin>>n>>k;
+		k2=k/2;//由于除法是向下取整，海怪又是从前面开始，所以除法用在 k2 上。
+		k1=k-k2;
+		h=0,ans=0;//记得清零！
+		for(int i=1;i<=n;i++) {
+			cin>>a[i];
+			if(k1>=a[i]){//为了节省一点时间就在读入的同时做了第一遍循环。
+				k1-=a[i];
+				h=i;
+			}else{
+				a[i]-=k1;
+				k1=0;
+			}
+		}
+		ans=h;
+		for(int i=n;i>h;i--){
+			if(a[i]<=k2) k2-=a[i],ans++;
+			else break;
+		}
+		cout<<ans<<"\n";
+	}
+	return 0;
+}
