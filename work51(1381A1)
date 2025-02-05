@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+int num[200010];
+signed main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0), cout.tie(0); 
+	int t;
+	cin >> t;
+	while (t--)	{
+		int n, id = 0;
+		string a, b;
+		cin >> n >> a >> b;
+		for ( int i = 0; i < n - 1; i++) {
+			if (a[i] != a[i + 1])
+				num[++id] = i + 1;//先把a全变成一个数字 
+		}
+		if (a[n - 1] != b[n - 1])//如果和b最后一个数不相等就集体反转 
+			num[++id] = n;
+		for ( int i = n - 1; i; i--)//逆序保证对后面的数没影响 
+			if (b[i] != b[i - 1])
+				num[++id] = i;
+		cout << id << ' ';
+		for ( int i = 1; i <= id; i++)
+			cout << num[i] << ' ';
+		cout << '\n';
+	}
+	return 0;
+}
