@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		long long n;
+		cin>>n;
+		map<long long ,int>mp;
+		long long temp=n;
+		long long ind=0;
+		for(long long i=2;i*i<=n;i++){
+			while(temp%i==0){
+				temp/=i;
+				mp[i]++;
+				if(mp[ind]<mp[i])ind=i;
+			}
+		}
+		if(temp>1){
+			mp[temp]++;
+			if(mp[ind]<mp[temp])ind=temp;
+		}
+ 		cout<<mp[ind]<<endl;
+		for(int i=1;i<mp[ind];i++){
+			cout<<ind<<' ';
+			n/=ind;
+		}
+		cout<<n<<endl;   
+	}
+}
