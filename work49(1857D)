@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct node
+{
+	int a,b,pos,sub;//a数组，b数组，位置，同位置的差
+}s[int(2e5+10)];
+int cmp(node x,node y)//按照差为第一关键字，位置为第二关键字
+{
+	if(x.sub!=y.sub) return x.sub>y.sub;
+	else return x.pos<y.pos;
+}
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>s[i].a;
+			s[i].pos=i;//记录位置
+		} 
+		for(int i=1;i<=n;i++)
+		{
+			cin>>s[i].b;
+			s[i].sub=s[i].a-s[i].b;//记录差值
+		}
+		sort(s+1,s+n+1,cmp);
+		s[0].sub=s[1].sub;//判断的时候会往前判一位，提前把0赋值了避免忽略1
+		int ans=0;
+		for(int i=1;i<=n;i++)
+		{
+			if(s[i].sub!=s[i-1].sub) break;//不是最大，退出
+			ans++;//答案加一
+		}
+		cout<<ans<<endl;
+		for(int i=1;i<=ans;i++) cout<<s[i].pos<<' ';//循环答案个数次，输出答案
+		cout<<endl;
+	}
+	return 0;
+}
