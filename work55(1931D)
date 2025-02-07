@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+const ll mod = 1e9 + 7;
+const int N = 200005;
+const int INF = 0x3f3f3f3f;
+ll a[N];
+map<pair<ll, ll>, int> mp;
+int main() {
+    int _;
+    scanf("%d", &_);
+    while (_--) {
+        mp.clear();
+        int n;
+        ll x, y;
+        scanf("%d%lld%lld", &n, &x, &y);
+        for (int i = 1; i <= n; i++) {
+            scanf("%lld", &a[i]);
+        }
+        ll ans = 0;
+        for (int i = n; i >= 1; i--) {
+            int s1 = (x - a[i] % x) % x, s2 = a[i] % y;
+            ans += mp[{s1, s2}];
+            mp[{a[i] % x, a[i] % y}]++;
+        }
+        printf("%lld\n", ans);
+    }
+    return 0;
+}
