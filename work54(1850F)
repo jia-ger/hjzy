@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+itn a[N],b[N],p[N],pp[N];
+
+signed main() 
+{   itn t;cin>>t;
+    
+    while(t--)
+	{   memset(b,0,sizeof b);
+	    memset(p,0,sizeof p);
+	    memset(pp,0,sizeof pp);
+	    itn n;cin>>n;
+	    for(itn i=1;i<=n;i++)
+		{
+		scanf("%lld",&a[i]);
+		if(a[i]<=n)
+		b[a[i]]++;
+	    }
+	    for(int i=1;i<=n;i++)
+		{
+			if(!pp[a[i]])//如果还未被搜到，那么枚举一遍
+			{
+				pp[a[i]]=1;
+				for(int j=a[i];j<=n;j+=a[i])
+				p[j]+=b[a[i]];//记录下这个位置能有几只青蛙经过。
+			}
+		}
+		sort(p+1,p+n+1,greater<int>());	
+	  cout<<p[1]<<endl;
+	 } 
+    return 0;
+}
