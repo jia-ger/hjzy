@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+
+
+signed main() 
+{   itn t;cin>>t;
+    while(t--)
+	{
+		itn a,b,n,m;cin>>a>>b>>n>>m;
+		if(n+m>a+b)cout<<"No"<<endl;
+		else 
+		{
+			itn minn=min(a,b);
+			
+			if(minn>=m)cout<<"Yes"<<endl;
+			else cout<<"No"<<endl;
+		}
+	 } 
+    return 0;
+}
