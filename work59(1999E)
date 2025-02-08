@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+itn a[N],b[N];
+int work(itn n)
+{ itn ans=0;
+	while(n)
+	{
+		n/=3;
+		ans++;
+	}
+	return ans;
+}
+signed main() 
+{   itn t;cin>>t;
+   for(itn i=1;i<=200000;i++)
+   {
+   	 a[i]=work(i);
+   	 b[i]=b[i-1]+a[i];
+   }
+   while(t--)
+   { 
+   	itn l,r;cin>>l>>r;
+   	itn ans=a[l];
+   	ans+=b[r]-b[l-1];
+           cout<<ans<<endl;
+    }
+    return 0;
+}
