@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+itn a[105],b[105];
+
+signed main() 
+{   itn t;cin>>t;
+   while(t--)
+   { 
+   	itn n,k;icn>>n>>k;
+   	for(itn i=1;i<=n;i++){
+	   scanf("%lld",&a[i]);b[i]=b[i-1]+a[i];}
+   	 	
+    itn ans=0;
+    for(itn i=n;i>=2;i--)
+    if(a[i]*100>b[i-1]*k)ans=max(ans,(long long)ceil((100*a[i]-k*b[i-1])*1.0/k)); 
+    
+    cout<<ans<<endl;
+    }
+    return 0;
+}
