@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=3e5+10;
+struct abd
+{
+	int p,q;
+}a[N];
+int b[N];
+bool cmp(abd x,abd y)
+{
+	return x.q<y.q;
+}
+signed main() {
+	itn n;cin>>n;
+	for(itn i=1;i<=n;i++)cin>>a[i].p;
+	for(itn i=1;i<=n;i++)cin>>a[i].q,b[i]=a[i].q;
+	sort(a+1,a+n+1,cmp);
+	for(itn i=1;i<=n;i++)
+	cout<<b[a[i].p]<<" ";
+	return 0;
+}
