@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+int a[30]; 
+signed main() 
+{   itn t;cin>>t;
+    while(t--)
+    {   memset(a,0,sizeof a);
+    	string s;cin>>s;
+    	itn ans=0,len=s.length();
+        for(itn i=0;i<s.length();i++)	
+        {   int c=s[i]-'a';
+        	a[c]++;
+            if(a[c]==2){
+        		for(itn j=0;j<=25;j++)a[j]=0;
+        		
+        		ans+=2;
+			}
+		}
+    	cout<<len-ans<<endl;
+    	
+	}
+    return 0;
+}
