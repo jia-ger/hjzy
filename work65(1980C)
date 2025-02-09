@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+int a[N],b[N],d[N],n,m; 
+void solve() {
+    map<int, int> need, have, cnt;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+    }
+    for (int i = 1; i <= n; i++) {
+        cin >> b[i];
+        if (a[i] != b[i]) {
+            need[b[i]]++; // 统计需要的数
+        }
+        cnt[b[i]]++; // 统计目标序列出现的数
+    }
+    cin >> m;
+    for (int i = 1; i <= m; i++) {
+        cin >> d[i];
+        have[d[i]]++; // 统计你可替换的数
+    }
+
+    // 处理缺项：目标序列里有你没有的数，直接NO
+    for (auto x : need) {
+        int val = x.first;
+        if (have[val] < x.second) {
+            cout << "NO\n";
+            return;
+        }
+    }
+
+  
+        // 如果最后一个数是你不需要的，并且b中还没出现过这个数就无法被后续的数覆盖，就NO
+        if (!need.count(d[m]) && cnt[d[m]] == 0) {
+            cout << "NO\n";
+            return;
+        }
+        
+    cout << "YES\n";
+}
+signed main() 
+{  itn t;cin>>t;
+   while(t--)solve();
+    return 0;
+}
