@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=2e5+10;
+int a[30]; 
+signed main() 
+{  itn n,m;cin>>n>>m;
+   if(m > n)swap(n,m);
+	if(m * 2 < n)cout<<m;
+	else cout<<(n + m) / 3;
+    return 0;
+}
