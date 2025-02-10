@@ -1,0 +1,88 @@
+//此解TLE 了
+itn a[N],p[N];
+signed main() 
+{ itn t;cin>>t;
+  while(t--)
+    {
+    	itn n;cin>>n;
+    	for(itn i=1;i<=n;i++)icn>>a[i];
+    	p[1]=2;p[n]=n-1;
+    	for(itn i=2;i<=n-1;i++)
+    	{
+    		if(abs(a[i]-a[i-1])>abs(a[i+1]-a[i]))p[i]=i+1;
+    		else p[i]=i-1;
+		}
+    	itn m;cin>>m;
+    	for(int i=1;i<=m;i++)
+    	{   itn ans=0;
+    		itn x,y;cin>>x>>y;
+    		if(x>y)
+    		{
+    			while(x!=y){
+    				if(p[x]==x-1)x--,ans++;
+    				else if(p[x]==x+1)ans+=a[x]-a[x-1],x--;
+				}
+			}
+			else 
+			{
+					while(x!=y){
+    				if(p[x]==x+1)x++,ans++;
+    				else if(p[x]==x-1)ans+=a[x+1]-a[x],x++;
+				}
+			}
+			cout<<ans<<endl;
+		}
+    	
+    	
+	 } 
+    return 0;
+}
+
+
+
+//发现每次查询做了一个重复的步骤都是从x到y分情况累计，那么就可以用数组存下这些数，直接查询数组来减少每次循环带来的复杂度
+//其次对于片段情况的累计 前面好多题给我思路可以利用前缀和  
+正解
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+const int N=1e5+10;
+
+itn a[N],p[N],r[N],l[N];//a[]数 p[]最近的点 r[]从第一个点到他要花费的 l[]从最后一个点到要花费 
+signed main() 
+{ itn t;cin>>t;
+  while(t--)
+    {
+    	itn n;cin>>n;
+    	for(itn i=1;i<=n;i++)icn>>a[i];
+    	p[1]=2;p[n]=n-1;
+    	for(itn i=2;i<=n-1;i++)
+    	{
+    		if(abs(a[i]-a[i-1])>abs(a[i+1]-a[i]))p[i]=i+1;
+    		else p[i]=i-1;
+		}
+		for(itn i=2;i<=n;i++)
+		{
+			if(p[i-1]==i)r[i]=r[i-1]+1;
+			else r[i]=r[i-1]+a[i]-a[i-1];
+		} 
+		for(itn i=n-1;i>=1;i--)
+		{
+			if(p[i+1]==i)l[i]=l[i+1]+1;//这里注意上个状态是i+1
+			else l[i]=l[i+1]+a[i+1]-a[i];
+		}
+    	itn m;cin>>m;
+    	for(int i=1;i<=m;i++)
+    	{   itn ans=0;
+    		itn x,y;cin>>x>>y;
+    		if(x>y)
+    		ans=l[y]-l[x];			
+			else 
+			ans=r[y]-r[x];
+			cout<<ans<<endl;
+		}    		
+	 } 
+    return 0;
+}
