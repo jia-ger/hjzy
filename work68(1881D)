@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define maxn 500005
+int a[maxn];
+map<int,int>q;//使用map进行快速的访问
+void check(int x)//质因数分解
+{
+	for (int i = 2;i <= sqrt(x);i ++)
+	{
+		while(x % i == 0)
+		{
+			q[i] ++;
+			x /= i;
+		}
+	}
+	if(x > 1) q[x] ++;
+}
+void solve()
+{
+	int n;
+	cin >> n;
+	q.clear();
+	for (int i = 1;i <= n;i ++)
+	{
+		scanf("%d",&a[i]);
+		check(a[i]);
+	}
+	for (auto i:q)
+	{
+		int k = i.second;
+		if(k % n != 0)
+		{
+			cout << "NO"<<endl;
+			return;
+		}
+	}
+	cout << "YES"<<endl;
+	return;
+}
+int main()
+{
+	int T = 0;
+	cin >> T;
+	while (T --)
+	{
+		solve();
+	}
+}
