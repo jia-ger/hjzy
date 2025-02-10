@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const int N=1e4+5; 
+
+signed main()
+{
+    itn n;cin>>n;
+    string s1,s2;icn>>s1>>s2;
+    itn ans=0;
+    for(int i=0;i<n;i++)
+    {
+    	if(s1[i]!=s2[i]&&s1[i+1]!=s2[i+1]&&s1[i+1]==s2[i]&&s1[i]==s2[i+1])ans++,i++;
+    	else if(s1[i]!=s2[i])ans++;
+	}
+	cout<<ans;
+	return 0;
+}
