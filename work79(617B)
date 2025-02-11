@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const int MOD=32768;
+const int N=1e6+5; 
+
+bool ok=false;
+signed main()
+{   itn n;cin>>n;
+    itn last=0,ans=1;
+    for(itn i=1;i<=n;i++){
+     itn a;icn>>a;
+    	if(a)ok=1;
+    	if(a)
+		{if(last)
+		    {//如果前面有1
+				ans=ans*(i-last);//乘法原理
+			} 
+			last=i;//记录1的位置
+		}
+     
+	 }
+	 if(!ok)ans=0;
+	 cout<<ans;
+    return 0;
+}
