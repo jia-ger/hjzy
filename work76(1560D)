@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const int INF=1e9;
+const int N=1e6+5; 
+itn ans;
+void mian()
+{
+    string s;cin>>s;
+    for(int i=0;i<=60;i++){
+        string t=to_string(1ll<<i);//这里是1 LL 可以有效保证精度
+        int k=0;
+        for(int j=0;j<s.size();j++){
+            if(k<t.size()&&s[j]==t[k])++k;
+        }
+        ans=min(ans,(itn)s.size()+(int)t.size()-k-k);
+    }
+}
+signed main()
+{   itn t;cin>>t;
+   
+   	while (t--) {
+	  ans=INF;
+		mian();
+		printf("%d\n",ans);
+	}
+    return 0;
+}
