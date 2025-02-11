@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const int N=1e6+5; 
+itn first[N*2],s[N];
+signed main()
+{   itn t;cin>>t;
+   
+   	while (t--) {
+		memset(first,0,sizeof(first)); //多组数据别忘了 memset
+		memset(s,0,sizeof(s));
+		char c[N];
+		scanf("%s",c+1);
+		int n=strlen(c+1);
+		for (int i=1;i<=n;i++) {
+			if (c[i]=='+') s[i]=s[i-1]+1;
+			else s[i]=s[i-1]-1;
+		}
+		long long ans=0;
+		for (int i=1;i<=n;i++) {
+			if (s[i]<0&&!first[-s[i]]) {
+				first[-s[i]]=i; //对数组值取相反数存下来当做标记
+				ans+=i;
+			}
+		}
+		ans+=n;
+		printf("%lld\n",ans);
+	}
+    return 0;
+}
