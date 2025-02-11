@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define icn cin
+#define itn int
+#define int long long
+
+const int N=2e5+5; 
+itn cnt[210];//每个点的度数 
+signed main()
+{
+   int t;cin>>t;
+   while(t--)
+   {memset(cnt,0,sizeof cnt);
+    vector<int>edge[210];
+   	itn n,m;cin>>n>>m;
+   	 for(itn i=1;i<=m;i++)
+   	 {
+   	 	itn x,y;cin>>x>>y;
+   	    edge[x].push_back(y);	
+   	 	edge[y].push_back(x);
+   	 	cnt[x]++,cnt[y]++;
+	 }
+	 set<int>se;itn ans=0;
+	 for(itn i=1;i<=n;i++)
+	 {
+	 	if(cnt[i]==1)ans++,se.insert(edge[i][0]);
+	 }
+	 cout<<se.size()<<" "<<ans/se.size()<<endl;
+   }
+    return 0;
+}
